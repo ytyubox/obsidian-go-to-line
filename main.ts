@@ -37,6 +37,25 @@ export default class GoToLinePlugin extends Plugin {
 
 	async onload() {
 		console.log("loading 'Go To Line' plugin")
+			this.addCommand({
+			id: "go-to-first-line",
+			name: "Go to first line",
+			editorCallback: (editor: Editor) => {
+				const firstLine: EditorPosition = { line: 0, ch: 0 };
+				editor.setSelection(firstLine);
+				editor.scrollIntoView(firstLine);
+			},
+		});
+		this.addCommand({
+			id: "go-to-last-line",
+			name: "Go to last line",
+			editorCallback: (editor: Editor) => {
+				const lastLine: EditorPosition = { line: editor.lastLine(), ch: 0 };
+				editor.setSelection(lastLine);
+				editor.scrollIntoView(lastLine);
+			},
+		});
+		
 		this.addCommand({
 			id: "go-to-line",
 			name: "Go to line",
