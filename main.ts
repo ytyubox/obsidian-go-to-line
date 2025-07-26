@@ -43,7 +43,7 @@ export default class GoToLinePlugin extends Plugin {
 			editorCallback: (editor: Editor) => {
 				const firstLine: EditorPosition = { line: 0, ch: 0 };
 				editor.setSelection(firstLine);
-				editor.scrollIntoView(firstLine);
+				editor.scrollIntoView({ from: firstLine, to: firstLine });
 			},
 		});
 		this.addCommand({
@@ -52,7 +52,7 @@ export default class GoToLinePlugin extends Plugin {
 			editorCallback: (editor: Editor) => {
 				const lastLine: EditorPosition = { line: editor.lastLine(), ch: 0 };
 				editor.setSelection(lastLine);
-				editor.scrollIntoView(lastLine);
+				editor.scrollIntoView({ from: lastLine, to: lastLine });
 			},
 		});
 		
